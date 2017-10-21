@@ -16,6 +16,7 @@
       topSpacing: 0, // No spacing by default
       zIndex: '', // No default z-index
       stopper: '.sticky-stopper', // Default stopper class, also accepts number value
+      stopperOffset: 0, // Stopper top offset
       stickyClass: false // Class applied to element when it's stuck
     };
     var settings = $.extend({}, defaults, options); // Accepts custom stopper id or class
@@ -84,6 +85,7 @@
           }
 
           if (hasStopper) {
+            stopPoint -= settings.stopperOffset;
             if (stopPoint < windowTop) {
               var diff = (stopPoint - windowTop) + topSpacing;
               $this.css({
